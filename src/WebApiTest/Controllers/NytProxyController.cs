@@ -17,7 +17,16 @@ namespace WebApiTest.Controllers
             using (var client = new HttpClient())
             {
                 var result = await client.GetAsync(url);
-                return result.Content.ReadAsStringAsync().Result;
+                if (result.IsSuccessStatusCode)
+                {
+                    var data = await result.Content.ReadAsStringAsync();
+                    return data;
+                }
+                else
+                {
+                    return this.BadRequest(new { error = "An error occured with your request!" });
+                }
+                
             }
         }
     }
