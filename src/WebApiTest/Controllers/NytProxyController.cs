@@ -19,7 +19,7 @@ namespace WebApiTest.Controllers
                 var result = await client.GetAsync(url);
                 if (result.IsSuccessStatusCode)
                 {
-                    var data = await result.Content.ReadAsStringAsync();
+                    var data = await result.Content.ReadAsAsync<dynamic>();
                     return data;
                 }
                 else
