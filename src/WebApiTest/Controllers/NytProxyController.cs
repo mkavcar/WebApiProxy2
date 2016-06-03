@@ -1,13 +1,14 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Net.Http;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace WebApiTest.Controllers
 {
     [Route("api/[controller]")]
+    [Produces("application/json")]
     public class NytProxyController : Controller
     {
-        // GET: api/values
         [HttpGet]
         public async Task<dynamic> Get(string section)
         {
@@ -19,8 +20,8 @@ namespace WebApiTest.Controllers
                 var result = await client.GetAsync(url);
                 if (result.IsSuccessStatusCode)
                 {
-                    var data = await result.Content.ReadAsAsync<dynamic>();
-                    return data;
+                    var data = await result.Content.ReadAsStringAsync();
+                    return JsonConvert.DeserializeObject<dynamic>(data);
                 }
                 else
                 {
