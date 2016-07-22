@@ -12,6 +12,7 @@ using System.Text;
 using WebApiTestCore1.Interfaces;
 using WebApiTestCore1.Models;
 using WebApiTestCore1.Services;
+using Microsoft.EntityFrameworkCore;
 
 namespace WebApiTestCore1
 {
@@ -53,6 +54,10 @@ namespace WebApiTestCore1
             
             //DI
             services.AddTransient<ICountryService, CountryService>();
+            services.AddTransient<IUserService, UserService>();
+
+            services.AddDbContext<IDbContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
         }
 
         // This method gets called by the runtime. Use this method to add services to the container.
@@ -66,6 +71,10 @@ namespace WebApiTestCore1
             
             //DI
             services.AddTransient<ICountryService, CountryService>();
+            services.AddTransient<IUserService, UserService>();
+
+            services.AddDbContext<IDbContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

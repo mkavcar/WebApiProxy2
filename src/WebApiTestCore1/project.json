@@ -19,7 +19,9 @@
     "Swashbuckle": "6.0.0-beta901",
     "Serilog.Extensions.Logging": "1.0.0",
     "Microsoft.Extensions.Caching.Abstractions": "1.0.0",
-    "Microsoft.Extensions.Caching.Memory": "1.0.0"  },
+    "Microsoft.Extensions.Caching.Memory": "1.0.0",
+    "Microsoft.EntityFrameworkCore": "1.0.0",
+    "Microsoft.EntityFrameworkCore.SqlServer": "1.0.0"  },
 
   "tools": {
     "Microsoft.AspNetCore.Server.IISIntegration.Tools": "1.0.0-preview2-final"
